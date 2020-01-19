@@ -1,0 +1,22 @@
+.jumbotron{
+    text-align: center;
+    background-color: rgb(58, 56, 56);
+    color: floralwhite;
+    border: 1px solid black;
+}
+
+#jumbo2{
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    color: black;
+    height: 300px;
+}
+
+#searchInput{
+    width: 250px;
+}
+
+#forecast{
+    height: 200px;
+    border-radius: 10px;
+}
