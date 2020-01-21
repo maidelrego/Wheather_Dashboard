@@ -10,8 +10,16 @@ $('#searchBtn').on('click', function(){
     }).then(function(response){
 
       console.log(response);
+      
     
       var currentWeather = $('#jumbo2');
+      // console.log($('#jumbo2'));
+
+      var replaceChild = currentWeather[0].childNodes.length;
+      
+      for( var i = 0; i < replaceChild; replaceChild--){
+        currentWeather[0].childNodes[i].remove();
+      }
       var iconValue = response.weather[0].icon;
       var icon = $('<img>');
       icon.attr('src', 'http://openweathermap.org/img/wn/' + iconValue + '.png')
@@ -20,7 +28,7 @@ $('#searchBtn').on('click', function(){
       var humidityEl =  $('<p>').text('Humididty: ' + response.main.humidity + ' %');
       var windEl =  $('<p>').text('Wind Speed: ' + response.wind.speed + ' MPH');
       currentWeather.append(cityName, tempeture, humidityEl, windEl, icon);
-
+      
 
       var citylon = response.coord.lon;
       var citylat = response.coord.lat;
@@ -35,11 +43,24 @@ $('#searchBtn').on('click', function(){
 
         console.log(response);
         var currentWeather = $('#jumbo2');
-        var uvIndex = $('<p>').text('UV Index: ' + response.value);
+        console.log($('#jumbo2'));
+        var uvIndex = $('<p>');
+        var span1 = $('<span>').text('UV Index: ');
+        var span2 = $('<span>').text(response.value);
+        span2.attr('id', 'spanIndex');
+        uvIndex.append(span1, span2);
         currentWeather.append(uvIndex);
         
         if(response.value <= 2){
-          uvIndex.attr('class', 'bg-success')
+          span2.attr('class', 'bg-success')
+        }
+
+        if (response.value >= 3 && 5){
+          span2.attr('class', 'bg-warning')
+        }
+
+        if(response.value > 6){
+          span2.attr('class', 'bg-danger')
         }
 
         var queryURL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchInput + "&appid=b9c5e4cc235bdc5c627de10d824323d1&cnt=5&units=imperial";
@@ -52,19 +73,25 @@ $('#searchBtn').on('click', function(){
 
         var results = response.list;
 
-        for( var i = 0; i < results.length; i++ ){
+        var replaceChild = $('#forecast')[0].childNodes.length;
+         
+        for( var i = 0; i < replaceChild; replaceChild--){
+          $('#forecast')[0].childNodes[i].remove();
+        }
+
+        for( var i = 4; i < results.length; --i ){
           var forecastDiv = $('<div>');
           forecastDiv.attr('class', 'col-sm');
           forecastDiv.attr('class', 'bg-primary');
           forecastDiv.attr('id', 'forecastDiv');
-          // var iconValue = results[i].weather[i].icon;
-          // console.log(iconValue);
-          // var icon2 = $('<img>');
-          // icon2.attr('src', 'http://openweathermap.org/img/wn/' + iconValue + '.png')
+          var iconValue = results[i].weather[0].icon;
+          console.log(iconValue);
+          var icon2 = $('<img>');
+          icon2.attr('src', 'http://openweathermap.org/img/wn/' + iconValue + '.png')
           var date = $('<h5>').text(results[i].dt_txt);
           var tempeture = $('<h5>').text('Tempeture: ' + results[i].main.temp + ' °F');
           var humidityEl =  $('<h5>').text('Humididty: ' + results[i].main.humidity + ' %');
-          forecastDiv.append(date, tempeture, humidityEl);
+          forecastDiv.append(date, icon2, tempeture, humidityEl);
           $('#forecast').prepend(forecastDiv);
         }
 
