@@ -1,21 +1,28 @@
+body{
+    background-image: url('./img/background.jpg');
+}
+
 #jumbo2{
     border-radius: 10px;
-    border: 1px solid lightgray;
-    color: black;
+    color: floralwhite;
     height: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #forecastDiv{
     height: 200px;
     border-radius: 10px;
-    margin-right: 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
     padding: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #header{
-    background-color: rgb(58, 56, 56);
     color: floralwhite;
     text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 h1{
@@ -26,20 +33,19 @@ h1{
 p{
     margin-left: 10px;
     margin-top: 10px;  
+    color: floralwhite;
 }
 
 h5{
     padding: 8px;
+    color: floralwhite;
 }
 
 #spanIndex{
     padding: 5px;
 }
-/* .container {
-    padding-left: 15px;
-    padding-right: 15px;
-    width:100%;
- } */
+
+
 
 
 
