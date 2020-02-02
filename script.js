@@ -23,7 +23,7 @@ $('#searchBtn').on('click', function getWeather(){
 
       var iconValue = response.weather[0].icon;
       var icon = $('<img>');
-      icon.attr('src', 'http://openweathermap.org/img/wn/' + iconValue + '.png');
+      icon.attr('src', 'https://openweathermap.org/img/wn/' + iconValue + '.png');
       var cityName = $('<h1>').text(response.name);
       var buttonHistory = $('<button>');
       buttonHistory.attr('class', 'list-group-item list-group-item-action');
@@ -43,7 +43,7 @@ $('#searchBtn').on('click', function getWeather(){
 
     
 
-      var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?appid=b9c5e4cc235bdc5c627de10d824323d1&lat=" + citylat + "&lon=" + citylon + "&cnt=1";
+      var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?appid=b9c5e4cc235bdc5c627de10d824323d1&lat=" + citylat + "&lon=" + citylon + "&cnt=1";
       $.ajax({
         url: queryURL2,
         method: "GET"
@@ -93,7 +93,7 @@ $('#searchBtn').on('click', function getWeather(){
           forecastDiv.attr('id', 'forecastDiv');
           var iconValue = results[i].weather[0].icon;
           var icon2 = $('<img>');
-          icon2.attr('src', 'http://openweathermap.org/img/wn/' + iconValue + '.png');
+          icon2.attr('src', 'https://openweathermap.org/img/wn/' + iconValue + '.png');
           var date = $('<h5>').text(results[i].dt_txt);
           var tempeture = $('<h5>').text('Tempeture: ' + results[i].main.temp + ' °F');
           var humidityEl =  $('<h5>').text('Humididty: ' + results[i].main.humidity + ' %');
